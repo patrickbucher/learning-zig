@@ -16,10 +16,14 @@ pub fn main() !void {
 
     for (args[1..]) |filepath| {
         const max_bytes = 16 * 1024 * 1024;
-        const text = try cwd.readFileAlloc(ally, filepath, max_bytes);
+        const text = try cwd.readFileAlloc(
+            ally,
+            filepath,
+            max_bytes,
+        );
         defer ally.free(text);
 
-        try stdout.writeAll(text);
+        try stdout.print("{s}", .{text});
     }
 
     try stdout.flush();
