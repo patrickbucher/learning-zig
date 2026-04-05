@@ -31,5 +31,6 @@ pub fn main() !void {
 
         _ = try reader.streamRemaining(stdout);
     }
+
     try stdout.flush();
 }
